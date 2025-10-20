@@ -1,0 +1,38 @@
+# Backend API Configuration
+api:
+  name: "Mobile POS Backend API"
+  version: "1.0.0"
+  description: "FastAPI backend for Mobile POS App"
+  
+  # API Endpoints
+  endpoints:
+    health: "/health"
+    products_search: "/api/products/search"
+    purchase: "/api/purchase"
+    docs: "/docs"
+  
+  # CORS Configuration
+  cors:
+    allowed_origins:
+      - "http://localhost:3000"
+      - "https://mobile-pos-frontend.azurewebsites.net"
+      - "https://mobile-pos-frontend.vercel.app"
+    allowed_methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    allowed_headers: ["*"]
+  
+  # Database Configuration
+  database:
+    local: "sqlite:///./pos_app.db"
+    production: "mysql+pymysql://username:password@server.mysql.database.azure.com:3306/database_name"
+  
+  # Environment Variables
+  environment:
+    DATABASE_URL: "${DATABASE_URL}"
+    CORS_ORIGINS: "${CORS_ORIGINS}"
+  
+  # Deployment Configuration
+  deployment:
+    platform: "azure"
+    container_registry: "your-registry.azurecr.io"
+    image_name: "mobile-pos-backend"
+    port: 8000
