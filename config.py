@@ -7,4 +7,8 @@ load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./pos_app.db")
 
 # CORS設定
-CORS_ORIGINS = ["http://localhost:3000"]
+CORS_ORIGINS = [
+    "http://localhost:3000",
+    "https://mobile-pos-frontend.azurewebsites.net",
+    "https://mobile-pos-frontend.vercel.app"
+]
